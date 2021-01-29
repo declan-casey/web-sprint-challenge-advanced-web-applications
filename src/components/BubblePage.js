@@ -14,7 +14,8 @@ const BubblePage = () => {
       .then( res => setColorList(res.data))
       .catch( err => console.log(err))
   }
-  useEffect( async() => {
+  useEffect( () => {
+    async function pause(){
     try {
       const {data} = await axiosWithAuth()
       .get("/colors");
@@ -22,7 +23,8 @@ const BubblePage = () => {
       console.log(data)
     } catch(err){
       console.log(err)
-    }
+    }}
+    pause()
   }, [])
 
   return (

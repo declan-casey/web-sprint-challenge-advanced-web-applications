@@ -1,13 +1,18 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import BubblePage from "./BubblePage";
+import Bubbles from "./Bubbles"
 
 test("Renders BubblePage without errors", () => {
   // Finish this test
+  render(<BubblePage/>)
 });
 
-test("Fetches data and renders the bubbles on mounting", () => {
+test("Fetches data and renders the bubbles on mounting", async () => {
   // Finish this test
+   render(<BubblePage/>)
+   const bub = await screen.getByText(/bubbles/i)
+  expect(bub).toBeInDocument()
 });
 
 //Task List

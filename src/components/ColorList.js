@@ -12,8 +12,7 @@ const initialColor = {
 const ColorList = ({ colors, updateColors, getColors}) => {
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
-  const { id } = useParams();
-  const {push} = useHistory()
+
 
   const editColor = color => {
     setEditing(true);
@@ -42,12 +41,12 @@ const ColorList = ({ colors, updateColors, getColors}) => {
   };
 
 
-  const deleteColor = (color) => {
-    axios 
-      .delete(`http://localhost:5000/api/colors/${id}`)
+  const deleteColor = (colorToEdit) => {
+    axiosWithAuth()
+      .delete(`/colors/${colorToEdit.id}`)
       .then(res => {
         getColors()
-        push("/")
+        
         console.log(res)
       })
       .catch(err => {
